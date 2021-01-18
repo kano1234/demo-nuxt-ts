@@ -1,5 +1,17 @@
 # demo-nuxt-ts
 
+## Overview
+It consists of nuxt + typescript (Option API).
+
+Constitution:
+```
+login
+  - dashboard
+  - user
+    - search
+    - create
+```
+
 ## Build Setup
 
 ```bash

@@ -22,7 +22,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/axios-accessor'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -36,7 +37,17 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
+
+  // axios
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/apizip/': { target: 'https://zipcloud.ibsnet.co.jp/api/', pathRewrite: { '^/apizip/': '' } }
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
