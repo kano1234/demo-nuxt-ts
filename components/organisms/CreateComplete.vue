@@ -15,17 +15,18 @@
 <script lang="ts">
 import Vue from 'vue'
 import CompleteButton from '@/components/molecules/CompleteButton.vue'
+import { actionType } from '~/enum/actionType'
 
 export default Vue.extend({
   components: { CompleteButton },
   name: 'CreateComplete',
   methods: {
-    buttonAction (action: string) {
+    buttonAction (action: actionType) {
       switch (action) {
-        case 'top':
+        case actionType.top:
           this.$emit('childEvent', action)
           break
-        case 'search':
+        case actionType.search:
           this.$router.push({ name: 'user-Search' })
           break
         default:

@@ -7,6 +7,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import ButtonBase from '@/components/ButtonBase.vue'
+import { actionType } from '~/enum/actionType'
 
 export default Vue.extend({
   name: 'InputButton',
@@ -15,7 +16,7 @@ export default Vue.extend({
   },
   methods: {
     confirm () {
-      this.$emit('childEvent', 'confirm')
+      this.$emit('childEvent', actionType.confirm)
     }
   }
 })

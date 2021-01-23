@@ -9,6 +9,7 @@
 import Vue from 'vue'
 
 import ButtonBase from '@/components/ButtonBase.vue'
+import { actionType } from '~/enum/actionType'
 
 export default Vue.extend({
   name: 'ConfirmButton',
@@ -17,10 +18,10 @@ export default Vue.extend({
   },
   methods: {
     create () {
-      this.$emit('childEvent', 'create')
+      this.$emit('childEvent', actionType.create)
     },
     back () {
-      this.$emit('childEvent', 'back')
+      this.$emit('childEvent', actionType.back)
     }
   }
 })
