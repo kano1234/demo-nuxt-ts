@@ -45,6 +45,7 @@ import BirthDayPicker from '@/components/atoms/BirthDayPicker.vue'
 import GenderRadio from '@/components/atoms/GenderRadio.vue'
 import { ZipResponse } from '@/types'
 import { ElMessageOptions } from 'element-ui/types/message'
+import { actionType } from '~/enum/actionType'
 
 interface StringKeyObject {
     [key: string]: any;
@@ -114,9 +115,9 @@ export default Vue.extend({
     getPlaceholder (name: string) {
       return this.$data.disabled ? '' : PLACEHOLDERS[name]
     },
-    buttonAction (action: string) {
+    buttonAction (action: actionType) {
       switch (action) {
-        case 'confirm':
+        case actionType.confirm:
           (this.$refs.formComponent as ElForm).validate( valid => {
             if (valid) {
               this.$data.disabled = true
@@ -125,12 +126,12 @@ export default Vue.extend({
             }
           })
           break
-        case 'back':
+        case actionType.back:
           this.$data.disabled = false
           this.$data.currentButton = InputButton
           this.childEvent(action)
           break
-        case 'create':
+        case actionType.create:
           this.childEvent(action)
           break
         default:
@@ -139,8 +140,8 @@ export default Vue.extend({
       (document.activeElement as HTMLElement).blur()
       window.scroll(0, 0)
     },
-    childEvent (name: string) {
-      this.$emit('childEvent', name)
+    childEvent (action: actionType) {
+      this.$emit('childEvent', action)
     }
   }
 })

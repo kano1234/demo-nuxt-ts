@@ -13,6 +13,7 @@
 import Vue from 'vue'
 import InputArea from '@/components/organisms/CreateInput.vue'
 import CompleteArea from '@/components/organisms/CreateComplete.vue'
+import { actionType } from '~/enum/actionType'
 
 export default Vue.extend({
   name: 'Create',
@@ -28,17 +29,17 @@ export default Vue.extend({
     }
   },
   methods: {
-    switchAction (action: string) {
+    switchAction (action: actionType) {
       switch (action) {
-        case 'create':
+        case actionType.create:
           this.$data.activeStep = 3
           this.$data.currentArea = CompleteArea
           break
-        case 'confirm':
+        case actionType.confirm:
           this.$data.activeStep = 1
           break
-        case 'back':
-        case 'top':
+        case actionType.back:
+        case actionType.top:
           this.$data.activeStep = 0
           this.$data.currentArea = InputArea
           break
